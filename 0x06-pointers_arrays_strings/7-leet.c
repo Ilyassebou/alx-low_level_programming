@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * leet - encode into 1337speak
@@ -8,21 +8,19 @@
 
 char *leet(char *str)
 {
-	char leet_map[] = "aAeEoOtTlL";
-	char leet_replace[] = "44370171";
 	int i, j;
+	char s1[] = "aAeEoOtTlL";
+	char s2[] = "4433007711";
 
-	for (i = 0; str[i]; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		for (j = 0; leet_map[j]; j++)
+		for (j = 0; j < 10; j++)
 		{
-			if (str[i] == leet_map[j])
+			if (str[i] == s1[j])
 			{
-				str[i] = leet_replace[j];
-				break;
+				str[i] = s2[j];
 			}
 		}
 	}
-
 	return (str);
 }
