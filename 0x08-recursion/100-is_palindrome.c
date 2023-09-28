@@ -23,15 +23,10 @@ int is_palindrome(char *s)
 
 int _strlen(char *s)
 {
-	int l = 0;
+	if (*s == '\0')
+		return (0);
 
-	while (*s != '\0')
-	{
-		l++;
-		s++;
-	}
-
-	return (l);
+	return (1 + _strlen(s + 1));
 }
 
 /**
