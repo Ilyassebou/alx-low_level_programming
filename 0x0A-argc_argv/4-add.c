@@ -40,11 +40,11 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			printf("Error: Argument '%s' is not a valid integer.\n", argv[i]);
+			printf("Error\n");
 			return (1);
 		}
 	}
 
-	printf("Sum: %d\n", sum);
+	printf("%d\n", sum);
 	return (0);
 }
