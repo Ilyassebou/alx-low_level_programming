@@ -2,19 +2,28 @@
 #include <stdlib.h>
 
 /**
- * main - prints the minimum number of coins to
- * make change for an amount of money
- * @argc: number of arguments
- * @argv: array of arguments
+ * main - calculates the minimum number of coins needed to make
+ * change for a given amount of money in cents.
  *
- * Return: 0 (Success), 1 (Error)
+ * @argc : The number of command-line arguments.
+ * @argv : An array of strings containing the command-line arguments.
+ *
+ * Return: 0 (Success), 1 (Error).
  */
 
 int main(int argc, char *argv[])
 {
-	int i, coin;
+	int coinValues[] = {25, 10, 5, 2, 1};
+	int numCoins = sizeof(coinValues) / sizeof(coinValues[0]);
+	int coinCount = 0;
+	int amountInCents = atoi(argv[1]);
+	int i;
 
-	coin = 0;
+	if (amountInCents < 0)
+	{
+		printf("0\n");
+		return (0);
+	}
 
 	if (argc != 2)
 	{
@@ -22,16 +31,15 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	i = atoi(argv[1]);
-
-	if (i < 0)
-		printf("0\n");
-	else
+	for (i = 0; i < numCoins; i++)
 	{
-		coin = coinConverter(i);
-
-		printf("%d\n", coin);
+		while (amountInCents >= coinValues[i])
+		{
+			amountInCents -= coinValues[i];
+			coinCount++;
+		}
 	}
 
+	printf("%d\n", coinCount);
 	return (0);
 }
