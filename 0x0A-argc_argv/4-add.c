@@ -3,12 +3,8 @@
 #include <ctype.h>
 
 /**
- * main - Entry point of the program
- *
  * check_num - check - string there are digit
- *
  * @str: input string
- *
  * Return: 1 if all characters in the string are digits, 0 otherwise
  */
 
