@@ -13,14 +13,15 @@
 
 void error_file(int file_from, int file_to, char *argv[])
 {
-	int exit_code = file_from == -1 ? 98 : (file_to == -1 ? 99 : 0);
-
-	if (exit_code != 0)
+	if (file_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't %s %s\n",
-				exit_code == 98 ? "read from" : "write to",
-				argv[exit_code == 98 ? 1 : 2]);
-		exit(exit_code);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (file_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 }
 
